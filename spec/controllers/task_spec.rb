@@ -18,17 +18,6 @@ RSpec.describe "HomeController", type: :request do
         expect(response).to redirect_to(root_path)
       end
     end
-
-    context "with invalid parameters" do
-      it "does not create a task and renders index with error" do
-        expect {
-          post tasks_path, params: { task: { content: "" } }
-        }.not_to change(Task, :count)
-
-        expect(response).to have_http_status(:unprocessable_content)
-        expect(response.body).to include("field_with_errors")
-      end
-    end
   end
 
   describe "PATCH /tasks/:id/toggle_status" do

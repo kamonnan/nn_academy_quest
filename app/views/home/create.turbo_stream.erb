@@ -23,16 +23,25 @@
 <% end %>
 
 <%= turbo_stream.update "task-form" do %>
-  <%= form_with model: Task.new, url: tasks_path, method: :post, data: { turbo_stream: true }, class: "flex flex-col md:flex-row md:items-start md:gap-4 mb-6 w-full" do |form| %>
-    <div class="w-full md:flex-1 flex flex-col">
-      <%= form.text_field :content, placeholder: "เพิ่มเควสต์ของฉัน", class: "task-input" %>
-    </div>
-    <div class="add-btn">
-      <%= button_tag type: "submit", class: " text-white p-3 rounded  w-full md:w-auto mt-2 md:mt-0 flex items-center justify-center", data: { testid: "submit-quest" } do %>
-        <div class="brag-button">
-        <span class="brag-text">add task</span>
+  <div id="task-form">
+    <%= form_with model: @task, url: tasks_path, method: :post, 
+        data: { turbo_stream: true }, 
+        class: "flex flex-col md:flex-row md:items-center md:gap-4 mb-6 w-full max-w-4xl mx-auto" do |form| %>
+      
+      <!-- Input -->
+      <div class="flex-1">
+        <%= form.text_field :content,
+            placeholder: "Add your task!",
+            class: "w-full px-4 py-3 border-2 border-blue-900 bg-white
+                     focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-lg",
+            data: { testid: "task-input" } %>
       </div>
-      <% end %>
-    </div>
-  <% end %>
+
+      <!-- ปุ่ม -->
+      <%= form.submit "Add task",
+          data: { testid: "submit-quest" },
+          class: "bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 shadow 
+                  transition-colors duration-200 cursor-pointer md:mt-0 mt-3" %>
+    <% end %>
+  </div>
 <% end %>
