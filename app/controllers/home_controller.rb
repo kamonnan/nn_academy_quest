@@ -8,7 +8,10 @@ class HomeController < ApplicationController
     @task = Task.new(task_params)
 
     if @task.save
-      redirect_to root_path
+      respond_to do |format|
+        format.turbo_stream
+        format.html { redirect_to root_path }
+      end
     else
       @tasks = Task.order(created_at: :desc)
       render :index, status: :unprocessable_entity
