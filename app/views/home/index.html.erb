@@ -13,7 +13,7 @@
         
         <!-- Field + error -->
         <div class="w-full md:flex-1 flex flex-col">
-            <%= form.text_field :title,
+            <%= form.text_field :content,
                 placeholder: "เพิ่มเควสต์ของฉัน",
                 class: "border px-3 py-2 rounded w-full" %>
 
@@ -29,23 +29,35 @@
         <div>
             <ul class="space-y-3">
             <% @task.each do |task| %>
-                <li id="<%= dom_id(task) %>" class="flex justify-between items-start bg-gray-100 px-4 py-3 rounded">
-                    <%= form_with model: task, url: toggle_status_task_path(task), method: :patch, data: { turbo_stream: true }, class: "flex items-start gap-3 flex-1 min-w-0" do |form| %>
-                        <div class="flex items-start gap-3 flex-1 min-w-0">
+                <li id="<%= dom_id(task) %>" class="flex justify-between items-center bg-gray-100 px-4 py-3 rounded">
+                    <!-- Left: Title -->
+                    <div class="flex-1 min-w-0">
                         <label for="task_<%= task.id %>" 
-                                class="text-base md:text-lg break-words whitespace-normal overflow-hidden <%= "line-through text-gray-500" if task.status %>">
-                            <%= task.content %>
+                            class="text-base md:text-lg break-words whitespace-normal overflow-hidden <%= "line-through text-gray-500" if task.status %>">
+                        <%= task.content %>
                         </label>
-                        </div>
+                    </div>
 
-                        <!-- Right: checkbox + delete -->
-                        <div class="flex justify-end items-center gap-3 shrink-0">
-                        <%= form.check_box :status, { checked: task.status, class: "w-5 h-5", id: "task_#{task.id}", onchange: "this.form.requestSubmit()" } %>
-                        <button class="group">
-                            <%= image_tag "delete.svg", alt: "Delete", class: "w-6 h-6 group-hover:opacity-60 transition-opacity duration-100" %>
-                        </button>
-                        </div>
-                    <% end %>
+                    <!-- Right: Checkbox + Delete -->
+                    <div class="flex items-center gap-3 shrink-0">
+                        <%= form_with model: task, url: toggle_status_task_path(task), method: :patch, data: { turbo_stream: true } do |form| %>
+                        <%= form.check_box :status, {
+                                checked: task.status,
+                                class: "w-5 h-5",
+                                id: "task_#{task.id}",
+                                onchange: "this.form.requestSubmit()",
+                                data: { testid: "checkbox-quest-#{task.id}" }
+                            } %>
+                        <% end %>
+
+                        <%= button_to tasks_path(task),
+                                    method: :delete,
+                                    form: { data: { turbo_stream: true } },
+                                    class: "group bg-transparent p-0 border-0" do %>
+                        <%= image_tag "delete.svg", alt: "Delete",
+                                        class: "w-6 h-6 group-hover:opacity-60 transition-opacity duration-100" %>
+                        <% end %>
+                    </div>
                 </li>
             <% end %>
             </ul>

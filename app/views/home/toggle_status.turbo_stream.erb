@@ -2,7 +2,7 @@
     <li id="<%= dom_id(@task) %>" class="flex justify-between items-center bg-gray-100 px-4 py-3 rounded">
         <!-- ซ้าย: Title -->
         <div class="flex-1 min-w-0">
-        <label for="quest_<%= @task.id %>" 
+        <label for="task_<%= @task.id %>" 
                 class="text-base md:text-lg break-words whitespace-normal overflow-hidden <%= "line-through text-gray-500" if @task.status %>">
             <%= @task.content %>
         </label>
@@ -20,11 +20,11 @@
                 } %>
         <% end %>
 
-        <%= button_to task_path(@task),
+        <%= button_to tasks_path(@task),
                         method: :delete,
                         form: { data: { turbo_stream: true } },
                         class: "group bg-transparent p-0 border-0" do %>
-            <%= image_tag "delete.svg", alt: "Delete",
+            <%= image_tag "delete_icon.svg", alt: "Delete",
                         class: "w-6 h-6 group-hover:opacity-60 transition-opacity duration-100" %>
         <% end %>
         </div>
