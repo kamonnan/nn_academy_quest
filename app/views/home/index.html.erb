@@ -1,10 +1,100 @@
-<div class="w-full bg-[#c2eaff]">
-  <section class="hero-container">
+<div class="w-full bg-[#b2856f]">
+  <div class="hero-container">
     <%= image_tag "bg.png", alt: "", class: "hero-bg" %>
     <%= image_tag "pic.svg", alt: "Profile photo", class: "hero-profile" %>
     <%= image_tag "profile_logo.svg", alt: "NN'S QUEST", class: "hero-logo" %>
     <%= link_to brag_path, class: "hero_brag" do %>
       <%= image_tag "brag_button.svg", alt: "NN'S QUEST" %>
     <% end %>
-  </section>
+  </div>
+  <div class="task_container">
+    <div class="add-task-section">
+        <input type="text" class="task-input" placeholder="ADD SOME TO-DO LIST" id="taskInput" maxlength="100">
+        <button class="add-btn" onclick="addTask()">
+            <%= image_tag "add_task.svg", alt: "task button", class: "hero-btn" %>
+        </button>
+    </div>
+
+      <!-- Tasks List -->
+    <div class="tasks-list" id="tasksList">
+    </div>
+  </div>
 </div>
+<script>
+        function addTask() {
+            const input = document.getElementById('taskInput');
+            const taskText = input.value.trim();
+            
+            if (taskText === '') {
+                alert('กรุณาป้อนรายการที่ต้องทำ');
+                return;
+            }
+
+            const tasksList = document.getElementById('tasksList');
+            
+            // Create new task element
+            const taskItem = document.createElement('div');
+            taskItem.className = 'task-item new';
+            taskItem.innerHTML = `
+                <div class="task-checkbox" onclick="toggleTask(this)"></div>
+                <div class="task-text">${taskText.toUpperCase()}</div>
+                <div class="delete-btn" onclick="deleteTask(this)">✗</div>
+            `;
+
+            // Insert at the top of uncompleted tasks
+            const firstCompletedTask = tasksList.querySelector('.task-item.completed');
+            if (firstCompletedTask) {
+                tasksList.insertBefore(taskItem, firstCompletedTask);
+            } else {
+                tasksList.appendChild(taskItem);
+            }
+            // Clear input
+            input.value = '';
+            input.focus();
+
+            // Remove animation class after animation completes
+            setTimeout(() => {
+                taskItem.classList.remove('new');
+            }, 300);
+        }
+
+        function toggleTask(checkbox) {
+            const taskItem = checkbox.parentElement;
+            const isCompleted = taskItem.classList.contains('completed');
+
+            if (isCompleted) {
+                // Uncomplete task
+                taskItem.classList.remove('completed');
+                checkbox.classList.remove('checked');
+            } else {
+                // Complete task
+                taskItem.classList.add('completed');
+                checkbox.classList.add('checked');
+            }
+        }
+
+        function deleteTask(deleteBtn) {
+            const taskItem = deleteBtn.parentElement;
+            
+            // Add fade out animation
+            taskItem.style.opacity = '0';
+            taskItem.style.transform = 'translateX(100px)';
+            taskItem.style.transition = 'all 0.3s ease';
+            
+            setTimeout(() => {
+                taskItem.remove();
+            }, 300);
+        }
+
+        // Add task when Enter is pressed
+        document.getElementById('taskInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                addTask();
+            }
+        });
+
+        // Focus on input when page loads
+        window.addEventListener('load', function() {
+            document.getElementById('taskInput').focus();
+        });
+    </script>

@@ -1,3 +1,5 @@
+
+
 .hero-container {
   position: relative !important;
   margin: 0 auto !important;
@@ -7,10 +9,8 @@
 
 .hero-bg {
   position: absolute !important;
-  top: 0 !important;
-  left: 0 !important;
   width: 100% !important;
-  height: 100vh;
+  height: 90vh;
   z-index: 1 !important;
 }
 
@@ -64,8 +64,8 @@
 /* โลโก้: จำกัดขนาดด้วย min() และใช้ margin คุมช่องไฟ */
 .logo_wrap{ display:flex; justify-content:center; margin: 0 clamp(12px, 2vw, 24px) clamp(16px, 3vw, 32px); }
 .logo{
-  width: min(44vw, 720px);   /* บนจอใหญ่จะคุมที่ ~44% หน้าจอ แต่ไม่เกิน 720px */
-  max-width: 92vw;           /* กันจอเล็กไม่ล้น */
+  width: min(50vw, 720px);   /* บนจอใหญ่จะคุมที่ ~44% หน้าจอ แต่ไม่เกิน 720px */
+  max-width: 95vw;           /* กันจอเล็กไม่ล้น */
   height: auto;
   display:block;
   image-rendering: pixelated;
@@ -88,3 +88,160 @@
 
 .footer{ margin-top: auto; }
 .footer_img{ width:100%; height:auto; display:block; image-rendering: pixelated; }
+
+.class_container{
+    width: fit-content;
+    background-color: #B68B75;
+
+}
+
+.todo-container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.add-task-section {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    padding-left: 4rem;
+    background-color: #B68B75;
+}
+
+.task-input {
+    flex: 1;
+    font-size: 1rem;
+    font-family: "Jersey 10", sans-serif;
+    background-color: white;
+    border: 0.2rem solid #2B2D74;
+    text-transform: uppercase;
+    padding: 0 1rem;
+}
+
+.add-btn{
+    padding-right: 4rem;
+    width: 20vw;
+}
+
+.task-input::placeholder {
+    color: #C0C0C0;
+    opacity: 1;
+}
+
+
+.tasks-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 0 4rem;
+}
+
+.task-item {
+    background-color: #C2EAFF;
+    border: 3px solid #2B2D74;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    transition: all 0.3s ease;
+}
+
+.task-item.completed {
+    background-color: #2B2D74;
+    color: white;
+    order: 999;
+}
+
+.task-checkbox {
+    width: 24px;
+    height: 24px;
+    background-color: #FFE501;
+    border: 3px solid #2B2D74;
+    cursor: pointer;
+    position: relative;
+    flex-shrink: 0;
+}
+
+.task_container{
+    background-color: #B68B75;
+    margin-top: 10rem;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+}
+
+.task-checkbox.checked {
+    background-color: #4A4A7C;
+}
+
+.task-checkbox.checked::after {
+    content: '✓';
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.task-text {
+    flex: 1;
+    font-size: 16px;
+    font-weight: bold;
+    color: #4A4A7C;
+    text-transform: uppercase;
+}
+
+.task-item.completed .task-text {
+    color: white;
+}
+
+.delete-btn {
+    width: 32px;
+    height: 32px;
+    background-color: #FF6B6B;
+    border: 2px solid #4A4A7C;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    flex-shrink: 0;
+}
+
+.delete-btn:hover {
+    background-color: #FF5252;
+    transform: scale(1.1);
+}
+
+.delete-btn:active {
+    transform: scale(0.95);
+}
+
+.empty-state {
+    text-align: center;
+    color: #4A4A7C;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 40px;
+    opacity: 0.7;
+}
+
+/* Animation for new tasks */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.task-item.new {
+    animation: slideIn 0.3s ease-out;
+}
