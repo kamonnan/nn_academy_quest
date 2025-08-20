@@ -28,7 +28,7 @@
         <!-- Quest List -->
         <div>
             <ul class="space-y-3">
-            <% @task.each do |task| %>
+            <% @tasks.each do |task| %>
                 <li id="<%= dom_id(task) %>" class="flex justify-between items-center bg-gray-100 px-4 py-3 rounded">
                     <!-- Left: Title -->
                     <div class="flex-1 min-w-0">
@@ -50,7 +50,7 @@
                             } %>
                         <% end %>
 
-                        <%= button_to tasks_path(task),
+                        <%= button_to task_path(task),
                                     method: :delete,
                                     form: { data: { turbo_stream: true } },
                                     class: "group bg-transparent p-0 border-0" do %>

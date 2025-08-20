@@ -20,12 +20,11 @@
                 } %>
         <% end %>
 
-        <%= button_to tasks_path(@task),
+        <%= button_to task_path(@task),
                         method: :delete,
                         form: { data: { turbo_stream: true } },
                         class: "group bg-transparent p-0 border-0" do %>
-            <%= image_tag "delete_icon.svg", alt: "Delete",
-                        class: "w-6 h-6 group-hover:opacity-60 transition-opacity duration-100" %>
+            <%= image_tag "delete.svg", alt: "Delete", class: "w-6 h-6 group-hover:opacity-60 transition-opacity duration-100" %>
         <% end %>
         </div>
     </li>

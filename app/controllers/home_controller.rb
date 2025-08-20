@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
   def index
     @task = Task.new
-    @task = Task.order(created_at: :desc)
+    @tasks = Task.order(created_at: :desc) # แก้จาก @task เป็น @tasks
   end
 
   def create
@@ -13,12 +13,6 @@ class HomeController < ApplicationController
       @tasks = Task.order(created_at: :desc)
       render :index, status: :unprocessable_entity
     end
-  end
-
-  private
-
-  def task_params
-    params.require(:task).permit(:content)
   end
 
   def toggle_status
@@ -37,7 +31,13 @@ class HomeController < ApplicationController
 
     respond_to do |format|
       format.turbo_stream
-      format.html { redirect_to root_path }
+      format.html { redirect_to root_path, notice: "Task deleted!" }
     end
+  end
+
+  private
+
+  def task_params
+    params.require(:task).permit(:content)
   end
 end
