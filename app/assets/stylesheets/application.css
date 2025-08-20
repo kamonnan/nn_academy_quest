@@ -42,6 +42,24 @@
   text-decoration: none !important;
 }
 
+.brag-button {
+    display: inline-block;
+    background-color: #007bff; /* สีพื้นหลังปุ่ม */
+    color: white;              /* สีตัวอักษร */
+    padding: 10px 20px;        /* ขนาดพื้นที่ด้านใน */
+    border-radius: 4px;        /* มุมโค้ง (ใส่ 0 ถ้าอยากได้เหลี่ยมสนิท) */
+    border: none;              /* ไม่มีเส้นขอบ */
+    cursor: pointer;           /* เมื่อนำเมาส์ไปชี้จะเป็นรูปมือ */
+    text-align: center;        /* จัดข้อความตรงกลาง */
+    font-weight: bold;
+    text-transform: uppercase; /* ตัวพิมพ์ใหญ่ทั้งหมด */
+    transition: background-color 0.3s ease;
+  }
+
+  .brag-button:hover {
+    background-color: #0056b3; /* สีตอน hover */
+  }
+
 :root{
   /* เส้นขอบ/สโตรก: โตตามจอแต่มีเพดาน */
   --stroke: clamp(2px, 0.35vw, 6px);
