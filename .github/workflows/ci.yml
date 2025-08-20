@@ -108,8 +108,8 @@ jobs:
         image: postgres:13
         ports: ['5432:5432']
         env:
-          POSTGRES_USER: katie
-          POSTGRES_PASSWORD: 040846
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
           POSTGRES_DB: nn_academy_quest_test
         options: >-
           --health-cmd pg_isready
@@ -119,7 +119,7 @@ jobs:
 
     env:
       RAILS_ENV: test
-      DATABASE_URL: postgres://katie:040846@localhost:5432/nn_academy_quest_test
+      DATABASE_URL: postgres://postgres:postgres@localhost:5432/nn_academy_quest_test
 
     steps:
       - name: Checkout code
@@ -152,8 +152,8 @@ jobs:
         image: postgres:13
         ports: ['5432:5432']
         env:
-          POSTGRES_USER: katie
-          POSTGRES_PASSWORD: 040846
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
           POSTGRES_DB: nn_academy_quest_test
         options: >-
           --health-cmd pg_isready
@@ -163,7 +163,7 @@ jobs:
 
     env:
       RAILS_ENV: test
-      DATABASE_URL: postgres://katie:040846@localhost:5432/nn_academy_quest_test
+      DATABASE_URL: postgres://postgres:postgres@localhost:5432/nn_academy_quest_test
 
     steps:
       - name: Checkout code
@@ -196,9 +196,9 @@ jobs:
       db:
         image: postgres:14
         env:
-          POSTGRES_USER: katie
-          POSTGRES_PASSWORD: 040846
-          POSTGRES_DB: nn_academy_quest_test_test
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: nn_academy_quest_test
         ports: [ "5432:5432" ]
         options: >-
           --health-cmd "pg_isready"
@@ -208,7 +208,7 @@ jobs:
 
     env:
       RAILS_ENV: test
-      DATABASE_URL: postgres://katie:040846@localhost:5432/nn_academy_quest_test
+      DATABASE_URL: postgres://postgres:postgres@localhost:5432/nn_academy_quest_test
 
     steps:
       - name: Checkout code
