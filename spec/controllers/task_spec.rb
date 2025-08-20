@@ -25,7 +25,7 @@ RSpec.describe "HomeController", type: :request do
           post tasks_path, params: { task: { content: "" } }
         }.not_to change(Task, :count)
 
-        expect(response).to have_http_status(:unprocessable_entity)
+        expect(response).to have_http_status(:unprocessable_content)
         expect(response.body).to include("field_with_errors")
       end
     end
