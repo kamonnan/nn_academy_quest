@@ -8,15 +8,18 @@ class HomeController < ApplicationController
     @task = Task.new(task_params)
 
     if @task.save
-      respond_to do |format|
-        format.turbo_stream
-        format.html { redirect_to root_path }
+      @new_task = @task
+      @task = Task.new
+      respond_to do |f|
+        f.turbo_stream
+        f.html { redirect_to root_path }
       end
     else
       @tasks = Task.order(created_at: :desc)
       render :index, status: :unprocessable_entity
     end
   end
+
 
   def toggle_status
     @task = Task.find(params[:id])

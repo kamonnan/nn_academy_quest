@@ -1,20 +1,22 @@
 <%= turbo_stream.prepend "task-list" do %>
-  <li id="<%= dom_id(@task) %>" class="flex justify-between items-center px-4 py-3">
+  <li id="<%= dom_id(@new_task) %>" class="flex justify-between items-center px-4 py-3">
     <div class="task-item">
-      <%= form_with model: @task, url: toggle_status_task_path(@task), method: :patch, data: { turbo_stream: true } do |form| %>
+      <%= form_with model: @new_task, url: toggle_status_task_path(@new_task), method: :patch, data: { turbo_stream: true } do |form| %>
         <%= form.check_box :status, {
-          checked: @task.status,
+          checked: @new_task.status,
           class: "task-checkbox",
-          id: "task_#{@task.id}",
+          id: "task_#{@new_task.id}",
           onchange: "this.form.requestSubmit()",
-          data: { testid: "checkbox-quest-#{@task.id}" }
+          data: { testid: "checkbox-quest-#{@new_task.id}" }
         } %>
       <% end %>
+
       <div class="txt-btn">
-        <label for="task_<%= @task.id %>" class="text-base md:text-lg break-words whitespace-normal overflow-hidden">
-          <%= @task.content %>
+        <label for="task_<%= @new_task.id %>" class="text-base md:text-lg break-words whitespace-normal overflow-hidden">
+          <%= @new_task.content %>
         </label>
-        <%= button_to task_path(@task), method: :delete, form: { data: { turbo_stream: true } }, class: "group bg-transparent p-0 border-0" do %>
+
+        <%= button_to task_path(@new_task), method: :delete, form: { data: { turbo_stream: true } }, class: "group bg-transparent p-0 border-0" do %>
           <%= image_tag "delete.svg", alt: "Delete", class: "delete-btn" %>
         <% end %>
       </div>
@@ -24,10 +26,10 @@
 
 <%= turbo_stream.update "task-form" do %>
   <div id="task-form">
-    <%= form_with model: @task, url: tasks_path, method: :post, 
-        data: { turbo_stream: true }, 
+    <%= form_with model: @task, url: tasks_path, method: :post,
+        data: { turbo_stream: true },
         class: "flex flex-col md:flex-row md:items-center md:gap-4 mb-6 w-full max-w-4xl mx-auto" do |form| %>
-      
+
       <!-- Input -->
       <div class="flex-1">
         <%= form.text_field :content,
