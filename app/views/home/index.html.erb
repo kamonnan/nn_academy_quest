@@ -1,13 +1,14 @@
 <div class="w-full bg-[#b2856f]">
-  <div class="hero-container">
-    <%= image_tag "bg.png", alt: "", class: "hero-bg" %>
+  <div class="w-full h-20">
+    <%= image_tag "bg.png", alt: "", class: "w-full h-20" %>
     <%= image_tag "pic.svg", alt: "Profile photo", class: "hero-profile" %>
     <%= image_tag "profile_logo.svg", alt: "NN'S QUEST", class: "hero-logo" %>
     <%= link_to brag_path, class: "hero_brag" do %>
-      <%= image_tag "brag_button.svg", alt: "NN'S QUEST" %>
+      <div class="brag-button">
+        <span class="brag-text">BRAG DOCS</span>
+      </div>
     <% end %>
   </div>
-
   <div class="task_container">
     <!-- เพิ่ม id และเปลี่ยนเป็น turbo_stream -->
     <div id="task-form">
@@ -15,7 +16,7 @@
         <!-- Field + error -->
         <div class="w-full md:flex-1 flex flex-col">
           <%= form.text_field :content,
-              placeholder: "Add your task!",
+              placeholder: "เพิ่มเควสต์ของฉัน",
               class: "task-input" %>
         </div>
         <div class="add-btn">

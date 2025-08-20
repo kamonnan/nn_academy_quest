@@ -40,7 +40,6 @@
   z-index: 10 !important; /* เพิ่ม z-index ให้สูงขึ้น */
   display: block !important;
   text-decoration: none !important;
-  transition: all 0.3s ease !important;
 }
 
 :root{
@@ -192,7 +191,6 @@
 
 .task_container{
     background-color: #B68B75;
-    margin-top: 10rem;
     padding-top: 3rem;
     padding-bottom: 3rem;
     padding-left: 3rem;

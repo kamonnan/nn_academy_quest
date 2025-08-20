@@ -14,7 +14,7 @@ class HomeController < ApplicationController
       end
     else
       @tasks = Task.order(created_at: :desc)
-      render :index, status: :unprocessable_content
+      render :index, status: :unprocessable_entity
     end
   end
 
