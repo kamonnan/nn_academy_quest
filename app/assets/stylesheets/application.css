@@ -79,12 +79,16 @@
   height: 100vh;
   margin : 0 auto 5rem auto;
 }
-.contain{
-  padding: clamp(16px, 2vw, 32px);
-  display:flex; align-items:center; justify-content:center;
-  text-align:center;
-}
 
+.contain {
+  display: flex;
+  flex-direction: column; /* <== สำคัญสุด */
+  align-items: flex-start;
+  padding: 2rem 2rem;
+  gap: 1rem;
+  text-align: left;
+  font-family: "Prompt", sans-serif;
+}
 
 .footer{ margin-top: auto; }
 .footer_img{ width:100%; height:auto; display:block; image-rendering: pixelated; }
