@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
-  get "home/index"
   root "home#index"
-  resources :quests, only: [ :create, :update, :destroy, :index ]
+  resources :home, only: [ :index, :create, :update, :destroy ] do
+    member { patch :toggle }
+  end
+  get :brag, to: "home#brag", as: :brag
+  post "/tasks", to: "home#create", as: :tasks
 
-  get "/home/brag", to: "home#brag", as: :brag
+  patch "/tasks/:id/toggle_status", to: "home#toggle_status", as: :toggle_status_task
 
-  get "up" => "rails/health#show", as: :rails_health_check
+  delete "/tasks/:id", to: "home#destroy", as: :task
 end
