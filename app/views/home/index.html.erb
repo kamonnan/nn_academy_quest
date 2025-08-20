@@ -1,4 +1,10 @@
-<div>
-  <h1 class="font-bold text-4xl">Home#index</h1>
-  <p>Find me in app/views/home/index.html.erb</p>
+<div class="w-full bg-[#c2eaff]">
+  <section class="hero-container">
+    <%= image_tag "bg.png", alt: "", class: "hero-bg" %>
+    <%= image_tag "pic.svg", alt: "Profile photo", class: "hero-profile" %>
+    <%= image_tag "profile_logo.svg", alt: "NN'S QUEST", class: "hero-logo" %>
+    <%= link_to brag_path, class: "hero_brag" do %>
+      <%= image_tag "brag_button.svg", alt: "NN'S QUEST" %>
+    <% end %>
+  </section>
 </div>

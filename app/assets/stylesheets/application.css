@@ -1,10 +1,90 @@
-/*
- * This is a manifest file that'll be compiled into application.css.
- *
- * With Propshaft, assets are served efficiently without preprocessing steps. You can still include
- * application-wide styles in this file, but keep in mind that CSS precedence will follow the standard
- * cascading order, meaning styles declared later in the document or manifest will override earlier ones,
- * depending on specificity.
- *
- * Consider organizing styles into separate files for maintainability.
- */
+.hero-container {
+  position: relative !important;
+  margin: 0 auto !important;
+  max-width: 1200px !important;
+  aspect-ratio: 1120/390 !important;
+}
+
+.hero-bg {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100vh;
+  z-index: 1 !important;
+}
+
+.hero-profile {
+  position: absolute !important;
+  left: 7rem !important;
+  top: 3rem !important;
+  width: 35vw;
+  z-index: 2 !important;
+}
+
+.hero-logo {
+  position: absolute !important;
+  right: 7rem !important;
+  top: 5rem !important;
+  width: 30vw;
+  z-index: 2 !important;
+}
+
+.hero_brag {
+  position: absolute !important;
+  right: 12% !important;
+  top: 90% !important;
+  width: 25% !important;
+  max-width: 300px !important;
+  min-width: 200px !important;
+  z-index: 10 !important; /* เพิ่ม z-index ให้สูงขึ้น */
+  display: block !important;
+  text-decoration: none !important;
+  transition: all 0.3s ease !important;
+}
+
+:root{
+  /* เส้นขอบ/สโตรก: โตตามจอแต่มีเพดาน */
+  --stroke: clamp(2px, 0.35vw, 6px);
+  --bg: #C2EAFF;
+  --ink: #1B2060;
+}
+
+/* layout */
+.brag_bg{
+  min-height: 100svh;
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+}
+
+/* header spacing บนจอใหญ่ไม่ให้เว้นเยอะเกิน */
+.header{ padding: clamp(12px, 2vw, 28px); }
+
+/* โลโก้: จำกัดขนาดด้วย min() และใช้ margin คุมช่องไฟ */
+.logo_wrap{ display:flex; justify-content:center; margin: 0 clamp(12px, 2vw, 24px) clamp(16px, 3vw, 32px); }
+.logo{
+  width: min(44vw, 720px);   /* บนจอใหญ่จะคุมที่ ~44% หน้าจอ แต่ไม่เกิน 720px */
+  max-width: 92vw;           /* กันจอเล็กไม่ล้น */
+  height: auto;
+  display:block;
+  image-rendering: pixelated;
+}
+
+/* กล่องคอนเทนต์: กว้างพอดี ไม่ยืดเกินไปบนจอใหญ่ */
+.content{
+  width: min(70rem, 76vw);
+  background: #fff;
+  border-radius: clamp(8px, 0.8vw, 14px);
+  height: 100vh;
+  margin : 0 auto 5rem auto;
+}
+.contain{
+  padding: clamp(16px, 2vw, 32px);
+  display:flex; align-items:center; justify-content:center;
+  text-align:center;
+}
+
+
+.footer{ margin-top: auto; }
+.footer_img{ width:100%; height:auto; display:block; image-rendering: pixelated; }
