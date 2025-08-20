@@ -110,18 +110,18 @@
 
 .task-input {
     flex: 1;
-    font-size: 1rem;
+    font-size: 1.35rem;
+    max-width: 70vw;
     font-family: "Jersey 10", sans-serif;
     background-color: white;
-    border: 0.2rem solid #2B2D74;
+    border: 0.25rem solid #2B2D74;
     text-transform: uppercase;
-    padding: 0 1rem;
-    
+    padding: 0.5rem 1rem;
+    margin-bottom: 1rem;
 }
 
 .add-btn{
-    padding-right: 4rem;
-    width: 20vw;
+    max-width: 11rem;
 }
 
 .task-input::placeholder {
@@ -129,6 +129,13 @@
     opacity: 1;
 }
 
+.task-input:focus {
+    border: none;
+}
+
+.task-btn{
+    width: 20rem;
+}
 
 .tasks-list {
     display: flex;
@@ -137,20 +144,36 @@
     padding: 0 4rem;
 }
 
+.txt-btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    font-family: "Jersey 10", sans-serif;
+    font-size: 1.5rem;
+    color: #2B2D74;
+}
+
 .task-item {
     background-color: #C2EAFF;
-    border: 3px solid #2B2D74;
+    border: 0.25rem solid #2B2D74;
     padding: 15px;
     display: flex;
     align-items: center;
-    gap: 15px;
-    transition: all 0.3s ease;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    width: 100%;
+    gap: 1rem;
 }
 
 .task-item.completed {
     background-color: #2B2D74;
     color: white;
     order: 999;
+}
+
+.task{
+    gap: 2rem;
 }
 
 .task-checkbox {
@@ -168,6 +191,9 @@
     margin-top: 10rem;
     padding-top: 3rem;
     padding-bottom: 3rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
+    justify-content: space-between;
 }
 
 .task-checkbox.checked {
@@ -200,27 +226,13 @@
 .delete-btn {
     width: 32px;
     height: 32px;
-    background-color: #FF6B6B;
-    border: 2px solid #4A4A7C;
-    border-radius: 50%;
     cursor: pointer;
     display: flex;
     align-items: center;
-    justify-content: center;
-    color: white;
-    font-weight: bold;
-    font-size: 18px;
+    justify-content: center; /* เปลี่ยนจาก flex-end */
     flex-shrink: 0;
 }
 
-.delete-btn:hover {
-    background-color: #FF5252;
-    transform: scale(1.1);
-}
-
-.delete-btn:active {
-    transform: scale(0.95);
-}
 
 .empty-state {
     text-align: center;
