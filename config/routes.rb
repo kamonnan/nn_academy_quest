@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   post "/tasks", to: "home#create", as: :tasks
 
-  patch 'tasks/:id/toggle_status', to: 'home#toggle_status', as: 'toggle_status_task'
+  patch "tasks/:id/toggle_status", to: "home#toggle_status", as: "toggle_status_task"
 
   delete "tasks/:id", to: "home#destroy", as: "task"
 end
