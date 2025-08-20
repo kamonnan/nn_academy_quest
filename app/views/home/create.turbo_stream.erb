@@ -33,7 +33,7 @@
       <!-- Input -->
       <div class="flex-1">
         <%= form.text_field :content,
-            placeholder: "Add your task!",
+            placeholder: "Add your task!", require: true,
             class: "w-full px-4 py-3 border-2 border-blue-900 bg-white
                      focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-lg",
             data: { testid: "task-input" } %>

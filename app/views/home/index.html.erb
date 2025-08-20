@@ -10,23 +10,25 @@
 
   <div class="task_container">
     <!-- เพิ่ม id และเปลี่ยนเป็น turbo_stream -->
-    <div id="task-form">
+    <div id="task-form" data-controller="task-form">
     <%= form_with model: @task, url: tasks_path, method: :post, 
-        data: { turbo_stream: true }, 
+        data: { turbo_stream: true }, require: true,
         class: "flex flex-col md:flex-row md:items-center md:gap-4 mb-6 w-full max-w-4xl mx-auto" do |form| %>
       
       <!-- Input -->
       <div class="flex-1">
         <%= form.text_field :content,
+            placeholder: "Add your task!", require: true,
             placeholder: "Add your task!",
             class: "w-full px-4 py-3 border-2 border-blue-900 bg-white
                      focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-lg",
-            data: { testid: "task-input" } %>
+            data: { testid: "task-input",
+            task_form_target: "input", action: "input->task-form#toggle" } %>
       </div>
 
       <!-- ปุ่ม -->
       <%= form.submit "Add task",
-          data: { testid: "submit-quest" },
+          data: { testid: "submit-quest", task_form_target: "submit"  },disabled: true,
           class: "bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 shadow 
                   transition-colors duration-200 cursor-pointer md:mt-0 mt-3" %>
     <% end %>
